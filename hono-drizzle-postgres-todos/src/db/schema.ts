@@ -18,7 +18,7 @@ export const usersTable = pgTable(
     passwordHash: varchar("password_hash", { length: 500 }).notNull(),
     age: integer(),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    updatedAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
   },
   (table) => [
     check("age_check1", sql`${table.age} <= 120`),
@@ -35,5 +35,5 @@ export const todosTable = pgTable("todos", {
   description: varchar({ length: 1000 }),
   completed: boolean().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
-  updatedAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
